@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+
+env:
+  app_version: 2
 jobs:
   install-and-test:
     runs-on: ubuntu-latest
@@ -22,11 +25,6 @@ jobs:
       - name: Build Android Release
         run: |
           cd android && ./gradlew assembleRelease
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: app-release.apk
-          path: android/app/build/outputs/apk/release/
       - name: Rename file
         run: |
           cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/ledlink.apk
@@ -35,6 +33,6 @@ jobs:
         with:
           credentials: ${{ secrets.GC_CREDENTIALS }}
           path: android/app/build/outputs/apk/release/ledlink.apk
-          destination: led-link-app.appspot.com/app/
+          destination: led-link-app.appspot.com/app/${{env.app_version}}
       
 
