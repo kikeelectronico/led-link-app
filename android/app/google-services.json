@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "36301454948",
+    "project_id": "led-link-app",
+    "storage_bucket": "led-link-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36301454948:android:942a7a826927764fa12971",
+        "android_client_info": {
+          "package_name": "com.enriquegomez.led_link"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36301454948-tibcolvp4ska5ra98ibmpfm8sqbnj0jo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtgvIf4tftx2s4AY4HR5MwX5iu6_Z_g30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36301454948-tibcolvp4ska5ra98ibmpfm8sqbnj0jo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:36301454948:android:97761f25ebfe05afa12971",
+        "android_client_info": {
+          "package_name": "com.led_link"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "36301454948-tibcolvp4ska5ra98ibmpfm8sqbnj0jo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtgvIf4tftx2s4AY4HR5MwX5iu6_Z_g30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "36301454948-tibcolvp4ska5ra98ibmpfm8sqbnj0jo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
