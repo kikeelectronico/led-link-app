@@ -27,7 +27,7 @@ jobs:
         with:
           name: app-release.apk
           path: android/app/build/outputs/apk/release/
-      - id: Upload files to Google Cloud Storage
+      - name: Upload files to Google Cloud Storage
         uses: google-github-actions/upload-cloud-storage@main
         with:
           credentials: ${{ secrets.GC_CREDENTIALS }}
