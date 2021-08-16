@@ -27,11 +27,14 @@ jobs:
         with:
           name: app-release.apk
           path: android/app/build/outputs/apk/release/
+      - name: Rename file
+        run: |
+          cp android/app/build/outputs/apk/release/app-release.apk android/app/build/outputs/apk/release/ledlink.apk
       - name: Upload files to Google Cloud Storage
         uses: google-github-actions/upload-cloud-storage@main
         with:
           credentials: ${{ secrets.GC_CREDENTIALS }}
-          path: android/app/build/outputs/apk/release/app-release.apk
-          destination: led-link-app.appspot.com/app/ledlink.apk
+          path: android/app/build/outputs/apk/release/ledlink.apk
+          destination: led-link-app.appspot.com/app/
       
 
