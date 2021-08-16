@@ -4,7 +4,7 @@ on:
     types: [released]
 
 env:
-  app_version: ${{ env.RELEASE_VERSION }}
+  app_version: ${{ github.event.release.tag_name }}
 jobs:
   install-and-test:
     runs-on: ubuntu-latest
