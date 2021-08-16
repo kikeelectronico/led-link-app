@@ -1,11 +1,10 @@
 name: React native build
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [released]
 
 env:
-  app_version: 2
+  app_version: ${{ env.RELEASE_VERSION }}
 jobs:
   install-and-test:
     runs-on: ubuntu-latest
