@@ -19,6 +19,9 @@ jobs:
       - name: Install npm dependencies
         run: |
           npm install
+      - name: Create Google services file
+        run: |
+          echo ${{ secrets.GOOGLE_SERVICES }} > android/app/google-services.json
       - name: Build Android Release
         run: |
           cd android && ./gradlew assembleRelease
