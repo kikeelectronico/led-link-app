@@ -11,7 +11,7 @@ import type { Node } from 'react';
 import {
   StyleSheet,
   StatusBar,
-  Alert,
+  View,
   AppRegistry,
   Linking,
 } from 'react-native';
@@ -413,7 +413,7 @@ const App: () => Node = () => {
   }
 
   return (
-    <>
+    <View style={{backgroundColor: "white", height: "100%"}}>
       <StatusBar
         animated={false}
         backgroundColor={color}
@@ -421,7 +421,7 @@ const App: () => Node = () => {
       />
       {renderPage()}
       <Toast ref={(ref) => Toast.setRef(ref)} />
-    </>
+    </View>
   );
 };
 
