@@ -6,12 +6,6 @@ const Loading = (props) => {
 
   return (
     <View style={styles.screen}>
-      <View style={styles.image_container}>
-        <Image
-          style={styles.image}
-          source={require("../assets/gears.png")}
-        />
-      </View>
       {
         props.show_connect_button ?
         <View style={styles.button_container}>
@@ -33,7 +27,12 @@ const Loading = (props) => {
           </View>
         </View>
         :
-        <></>
+        <View style={styles.image_container}>
+          <Image
+            style={styles.image}
+            source={require("../assets/gears.png")}
+          />
+        </View>
       }
     </View>
   );
@@ -47,7 +46,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image_container: {
-    flex: 2,
     width: "100%",
     justifyContent: 'center',
     alignItems: 'center',
@@ -57,7 +55,6 @@ const styles = StyleSheet.create({
     height: 300,
   },
   button_container: {
-    flex: 1,
     width: "100%",
   },
   button: {
