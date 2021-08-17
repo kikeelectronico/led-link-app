@@ -31,6 +31,7 @@ const Setup = (props) => {
                 style={styles.image}
                 source={require("../assets/signal.png")}
               />
+              <Text style={styles.text}>WiFi</Text>
             </Pressable>
 
             <Pressable onPress={() => {props.setStep("setupColor")}} style={styles.image_button}>
@@ -38,6 +39,7 @@ const Setup = (props) => {
                 style={styles.image}
                 source={require("../assets/color_wheel.png")}
               />
+              <Text style={styles.text}>Color</Text>
             </Pressable>
 
             <Pressable onPress={() => {props.setStep("setupServers")}} style={styles.image_button}>
@@ -45,6 +47,7 @@ const Setup = (props) => {
                 style={styles.image}
                 source={require("../assets/cloud.png")}
               />
+              <Text style={styles.text}>Servidores</Text>
             </Pressable>
 
           </View>
@@ -64,13 +67,19 @@ const styles = StyleSheet.create({
     height: "90%",
   },
   image_button: {
-    flex: 1,
-    justifyContent: "center",
+    width: "70%",
+    marginLeft: "15%",
+    marginTop: 20,
+    flexDirection: "row",
     alignItems: 'center',
   },
   image: {
-    width: 230,
-    height: 140,
+    width: 69,
+    height: 42,
+  },
+  text: {
+    marginLeft: 20,
+    fontSize: 20,
   },
 });
 
