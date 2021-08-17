@@ -33,7 +33,7 @@ import Setup from './components/Setup'
 import SetupWifi from './components/SetupWifi'
 import SetupColor from './components/SetupColor'
 import SetupServers from './components/SetupServers'
-import End from './components/End'
+import Updating from './components/Updating'
 import Docs from './components/Docs'
 
 messaging().setBackgroundMessageHandler(async remoteMessage => {
@@ -408,8 +408,8 @@ const App: () => Node = () => {
                 setStep={setStep}
                 sendServer={sendServer}
               />
-    else if (step === "end")
-      return <End sendReboot={sendReboot}/>
+    else if (step === "updating")
+      return <Updating sendUpdateFirmware={sendUpdateFirmware}/>
   }
 
   return (

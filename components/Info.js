@@ -71,7 +71,7 @@ const Info = (props) => {
                 <>
                   <View style={styles.button}>
                     <Button
-                      onPress={() => {props.updateFirmware()}}
+                      onPress={() => {props.setStep("updating")}}
                       title="Actualizar"
                       color="#333"
                       accessibilityLabel="Actualizar el firmware de LED link"

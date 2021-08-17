@@ -3,13 +3,13 @@ import { View, Text, StyleSheet, Button, Image } from 'react-native';
 
 import StepItem from './StepItem'
 
-const End = (props) => {
+const Updating = (props) => {
 
   return (
     <View>
       <StepItem
-        title="¡Bien hecho!"
-        text="Tu LED link se va a reiniciar."
+        title="Actualizando"
+        text="Tu LED link se va a actualizar. Este proceso puede tardar varios minutos durante los cuales no vas a poder conectarte a él."
       />
       <View
         style={{
@@ -30,10 +30,10 @@ const End = (props) => {
 
       <View style={styles.button}>
         <Button
-          onPress={() => {props.sendReboot()}}
-          title="Finalizar"
+          onPress={() => {props.sendUpdateFirmware()}}
+          title="Actualizar"
           color="#333"
-          accessibilityLabel="Volver al menú principal"
+          accessibilityLabel="Actualizar"
         />
       </View>
     </View>
@@ -58,4 +58,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default End;
+export default Updating;
