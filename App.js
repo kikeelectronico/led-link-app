@@ -59,9 +59,9 @@ const App: () => Node = () => {
   const [password, setPassword] = useState("");
   const [ota, setOta] = useState("N/A");
   const [broker, setBroker] = useState("N/A");
-  const [user, setUser] = useState("");
-  const [pass, setPass] = useState("");
-  const [topic, setTopic] = useState("ledlink");
+  const [broker_topic, setBrokerTopic] = useState("N/A");
+  const [broker_user, setBrokerUser] = useState("");
+  const [broker_pass, setBrokerPass] = useState("");
   const [firmware_version, setFirmwareVersion] = useState("N/A");
 
   useEffect(() => {
@@ -141,7 +141,7 @@ const App: () => Node = () => {
               characteristic => {setFirmwareVersion(base64.decode(characteristic.value))}
             )
             // Color
-            manager.readCharacteristicForDevice(connected_device.id, "e63589ad-5603-49c8-b82d-b608c65d8d9c", "737bfbc4-3d44-44a0-bad0-3314a5714180")
+            manager.readCharacteristicForDevice(connected_device.id, "4fafc201-1fb5-459e-8fcc-c5c9c331914b", "737bfbc4-3d44-44a0-bad0-3314a5714180")
             .then(
               characteristic => {setColor(base64.decode(characteristic.value)), setStep("home");}
             )
@@ -160,15 +160,20 @@ const App: () => Node = () => {
             .then(
               characteristic => {setBroker(base64.decode(characteristic.value));}
             )
+            // Topic
+            manager.readCharacteristicForDevice(connected_device.id, "e63589ad-5603-49c8-b82d-b608c65d8d9c", "3eee7dd7-94ce-4206-a163-dc8cb75d2751")
+            .then(
+              characteristic => {setBrokerTopic(base64.decode(characteristic.value));}
+            )
             // User
             manager.readCharacteristicForDevice(connected_device.id, "e63589ad-5603-49c8-b82d-b608c65d8d9c", "46e9b927-dd23-4fac-ba8f-516af8a9837c")
             .then(
-              characteristic => {setUser(base64.decode(characteristic.value));}
+              characteristic => {setBrokerUser(base64.decode(characteristic.value));}
             )
             // Password
             manager.readCharacteristicForDevice(connected_device.id, "e63589ad-5603-49c8-b82d-b608c65d8d9c", "3f85b4e2-fe1f-4c17-a7d3-8e1de0fd5ebd")
             .then(
-              characteristic => {setPass(base64.decode(characteristic.value));}
+              characteristic => {setBrokerPass(base64.decode(characteristic.value));}
             )
             // Close conection
             manager.onDeviceDisconnected(connected_device.id, () => {
@@ -241,8 +246,8 @@ const App: () => Node = () => {
             position: "bottom",
             bottomOffset: 100,
           });
-          setStep("setup");
         })
+        setStep("setup");
       }
     )
   }
@@ -253,7 +258,7 @@ const App: () => Node = () => {
       services => {
         manager.writeCharacteristicWithResponseForDevice(
           device.id,
-          "e63589ad-5603-49c8-b82d-b608c65d8d9c",
+          "4fafc201-1fb5-459e-8fcc-c5c9c331914b",
           "737bfbc4-3d44-44a0-bad0-3314a5714180",
           base64.encode(color)
           )
@@ -264,8 +269,8 @@ const App: () => Node = () => {
             position: "bottom",
             bottomOffset: 100,
           });
-          setStep("setup");
         })
+        setStep("setup");
       }
     )
   }
@@ -292,7 +297,21 @@ const App: () => Node = () => {
             device.id,
             "e63589ad-5603-49c8-b82d-b608c65d8d9c",
             "3eee7dd7-94ce-4206-a163-dc8cb75d2751",
-            base64.encode(topic)
+            base64.encode(broker_topic)
+            )
+          .then((c) => {})
+          manager.writeCharacteristicWithResponseForDevice(
+            device.id,
+            "e63589ad-5603-49c8-b82d-b608c65d8d9c",
+            "46e9b927-dd23-4fac-ba8f-516af8a9837c",
+            base64.encode(broker_user)
+            )
+          .then((c) => {})
+          manager.writeCharacteristicWithResponseForDevice(
+            device.id,
+            "e63589ad-5603-49c8-b82d-b608c65d8d9c",
+            "3f85b4e2-fe1f-4c17-a7d3-8e1de0fd5ebd",
+            base64.encode(broker_pass)
             )
           .then((c) => {
             Toast.show({
@@ -301,8 +320,8 @@ const App: () => Node = () => {
               position: "bottom",
               bottomOffset: 100,
             });
-            setStep("setup");
           })
+          setStep("setup");
         }
       );
   }
@@ -413,14 +432,14 @@ const App: () => Node = () => {
       return <SetupServers
                 ota={ota}
                 broker={broker}
-                topic={topic}
-                user={user}
-                pass={pass}
+                topic={broker_topic}
+                user={broker_user}
+                pass={broker_pass}
                 setOta={setOta}
                 setBroker={setBroker}
-                setTopic={setTopic}
-                setUser={setUser}
-                setPass={setPass}
+                setTopic={setBrokerTopic}
+                setUser={setBrokerUser}
+                setPass={setBrokerPass}
                 setStep={setStep}
                 sendServer={sendServer}
               />
