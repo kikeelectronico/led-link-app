@@ -59,6 +59,8 @@ const App: () => Node = () => {
   const [password, setPassword] = useState("");
   const [ota, setOta] = useState("N/A");
   const [broker, setBroker] = useState("N/A");
+  const [user, setUser] = useState("");
+  const [pass, setPass] = useState("");
   const [topic, setTopic] = useState("ledlink");
   const [firmware_version, setFirmwareVersion] = useState("N/A");
 
@@ -157,6 +159,16 @@ const App: () => Node = () => {
             manager.readCharacteristicForDevice(connected_device.id, "e63589ad-5603-49c8-b82d-b608c65d8d9c", "02e9cf6d-5f8c-41b6-bdbe-089178521b63")
             .then(
               characteristic => {setBroker(base64.decode(characteristic.value));}
+            )
+            // User
+            manager.readCharacteristicForDevice(connected_device.id, "e63589ad-5603-49c8-b82d-b608c65d8d9c", "46e9b927-dd23-4fac-ba8f-516af8a9837c")
+            .then(
+              characteristic => {setUser(base64.decode(characteristic.value));}
+            )
+            // Password
+            manager.readCharacteristicForDevice(connected_device.id, "e63589ad-5603-49c8-b82d-b608c65d8d9c", "3f85b4e2-fe1f-4c17-a7d3-8e1de0fd5ebd")
+            .then(
+              characteristic => {setPass(base64.decode(characteristic.value));}
             )
             // Close conection
             manager.onDeviceDisconnected(connected_device.id, () => {
@@ -402,9 +414,13 @@ const App: () => Node = () => {
                 ota={ota}
                 broker={broker}
                 topic={topic}
+                user={user}
+                pass={pass}
                 setOta={setOta}
                 setBroker={setBroker}
                 setTopic={setTopic}
+                setUser={setUser}
+                setPass={setPass}
                 setStep={setStep}
                 sendServer={sendServer}
               />

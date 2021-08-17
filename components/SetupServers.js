@@ -40,6 +40,18 @@ const SetupServers = (props) => {
           value={props.topic}
           onChangeText={props.setTopic}
         />
+        <Text>Usuario MQTT</Text>
+        <TextInput
+          style={styles.input}
+          value={props.user}
+          onChangeText={props.setUser}
+        />
+        <Text>Contraseña MQTT</Text>
+        <TextInput
+          style={styles.input}
+          value={props.pass}
+          onChangeText={props.setPass}
+        />
       </View>
 
       <View style={styles.button}>
