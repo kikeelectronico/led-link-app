@@ -7,8 +7,8 @@ import StepItem from './StepItem'
 
 const Info = (props) => {
 
-  const [available_app_version, setAvailableAppVersion] = useState("1");
-  const [available_firmware_version, setAvailableFirmwareVersion] = useState("1");
+  const [available_app_version, setAvailableAppVersion] = useState("");
+  const [available_firmware_version, setAvailableFirmwareVersion] = useState("");
   
   var config = {
     databaseURL: "https://led-link-app-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -59,7 +59,7 @@ const Info = (props) => {
             <StepItem 
               title="Versión de firmware" 
               text={ 
-                props.firmware_version !== available_firmware_version
+                props.firmware_version !== available_firmware_version && available_app_version !== ""
                 ?
                 props.firmware_version + " (disponible versión " + available_firmware_version + ")"
                 :
@@ -67,7 +67,7 @@ const Info = (props) => {
               }
             />
             {
-              props.firmware_version !== available_firmware_version ?
+              props.firmware_version !== available_firmware_version && available_app_version !== "" ?
                 <>
                   <View style={styles.button}>
                     <Button
@@ -94,7 +94,7 @@ const Info = (props) => {
             <StepItem 
               title="Versión de App" 
               text={ 
-                props.app_version !== available_app_version
+                props.app_version !== available_app_version && available_app_version !== ""
                 ?
                 props.app_version + " (disponible versión " + available_app_version + ")"
                 :
@@ -103,7 +103,7 @@ const Info = (props) => {
             />
 
             {
-              props.app_version !== available_app_version ?
+              props.app_version !== available_app_version && available_app_version !== "" ?
                 <>
                   <View style={styles.button}>
                     <Button
