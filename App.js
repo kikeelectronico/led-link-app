@@ -42,7 +42,7 @@ messaging().setBackgroundMessageHandler(async remoteMessage => {
 
 AppRegistry.registerComponent('app', () => App);
 
-const app_version = "1.2";
+const app_version = "1.2.1";
 var interval_id = 0;
 var devices_var = [];
 var devices_id = []
