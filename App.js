@@ -63,6 +63,7 @@ const App: () => Node = () => {
   const [broker_user, setBrokerUser] = useState("");
   const [broker_pass, setBrokerPass] = useState("");
   const [firmware_version, setFirmwareVersion] = useState("N/A");
+  const [ledlink_status, setLedlinkStatus] = useState("Esperando")
 
   useEffect(() => {
     const unsubscribe = messaging().onMessage(async remoteMessage => {
@@ -140,6 +141,8 @@ const App: () => Node = () => {
             .then(
               characteristic => {setFirmwareVersion(base64.decode(characteristic.value))}
             )
+            // Status
+            manager.monitorCharacteristicForDevice(connected_device.id, "a7c17df2-0e55-42cd-9b3e-2852c5441a70", "a3a5d014-c988-42b0-a49e-50f26ae8fbd6", (error, characteristic) => {setLedlinkStatus(base64.decode(characteristic.value))})
             // Color
             manager.readCharacteristicForDevice(connected_device.id, "4fafc201-1fb5-459e-8fcc-c5c9c331914b", "737bfbc4-3d44-44a0-bad0-3314a5714180")
             .then(
@@ -378,6 +381,7 @@ const App: () => Node = () => {
       return <Welcome setStep={setStep}/>
     else if (step === "home")
       return <Home
+                status={ledlink_status}
                 device={device}
                 color={color}
                 connected={connected}

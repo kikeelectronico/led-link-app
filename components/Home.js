@@ -14,7 +14,7 @@ const Home = (props) => {
         </View>
         <View>
           <View style={styles.subtitle_container}>
-            <Text style={styles.subtitle}>{props.connected ? "Conectado" : "Fallo al conectar"}</Text>
+            <Text style={styles.subtitle}>{props.connected ? props.status : "Fallo al conectar"}</Text>
             <View style={[styles.color_circle,{backgroundColor: props.color}]}></View>
           </View>         
         </View>
